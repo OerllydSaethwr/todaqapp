@@ -29,7 +29,7 @@ def index(request):
                 return redirect('index')
     else:
         form = Login()
-    return render(request, 'register/index.html', {'form': form})
+    return render(request, 'register/newIndex.html', {'form': form})
 
 
 def signup(request):
