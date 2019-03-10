@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+    <style>
+        .split {
+            height: 100%;
+            width: 50%;
+            position: fixed;
+            z-index: 1;
+            top: 0;
+            overflow-x: hidden;
+            padding-top: 20px;
+        }
+
+        .left {
+            left: 0;
+            color: white;
+            background-color: #d10a49;
+        }
+
+        .right {
+            right: 0;
+            color: #d10a49;
+            background-color: #ffffff;
+        }
+
+        .centered {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+<div class="split left">
+    <div class="centered" onclick="location.href='patient'">
+        <h2>Patient</h2>
+        <p>Sign up</p>
+    </div>
+</div>
+
+<div class="split right">
+    <div class="centered" onclick="location.href='doctor'">
+        <h2>Doctor</h2>
+        <p>Sign up</p>
+    </div>
+</div>
+</body>
+</html>
