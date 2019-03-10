@@ -2,12 +2,12 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Doctor</title>
+    <title>Patient</title>
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
     <style>
         body {
-            color: #ffffff;
+            color: black;
             background: #d10a49;
         }
         .row {
@@ -24,47 +24,58 @@
     </style>
 </head>
 <body>
-<form class="w-50 Absolute-Center">
+{% block content %}
+    <form class="w-50 Absolute-Center" method="post", action="" name="RegisterUser">{% csrf_token %}
     <div class="row">
         <div class="col">
-            <input type="text" class="form-control" placeholder="First name">
+            <input type="text" class="form-control" placeholder="First name" name="first_name">
         </div>
         <div class="col">
-            <input type="text" class="form-control" placeholder="Last name">
-        </div>
-    </div>
-    <div class="row">
-        <div class="col">
-            <input type="text" class="form-control" placeholder="Birth date">
+            <input type="text" class="form-control" placeholder="Last name" name="last_name">
         </div>
     </div>
     <div class="row">
         <div class="col">
-            <input type="text" class="form-control" placeholder="Identification number">
+            <input type="text" class="form-control" placeholder="Birth date" name="birth_date">
         </div>
     </div>
     <div class="row">
         <div class="col">
-            <input type="text" class="form-control" placeholder="Medical certificate number">
+            <input type="text" class="form-control" placeholder="Email" name="email">
         </div>
     </div>
     <div class="row">
         <div class="col">
-            <input type="text" class="form-control" placeholder="Telephone number">
+            <input type="text" class="form-control" placeholder="Identification number" name="id_num">
         </div>
     </div>
     <div class="row">
         <div class="col">
-            <input type="text" class="form-control" placeholder="Password">
+            <input type="text" class="form-control" placeholder="Health insurance number" name="insur_num">
         </div>
     </div>
     <div class="row">
         <div class="col">
-            <div align="center" onclick="location.href='doctorpage'">
-                <h2>Submit</h2>
-            </div>
+            <input type="text" class="form-control" placeholder="Address" name="address">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <input type="text" class="form-control" placeholder="Telephone number" name="tel_num">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <input type="text" class="form-control" placeholder="Password" name="password">
+            <input type="hidden" value="True" class="form-control" name="is_doctor">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <button type="submit" class="btn btn-primary">Submit</button>
         </div>
     </div>
 </form>
+{% endblock %}
 </body>
 </html>

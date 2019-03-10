@@ -3,6 +3,7 @@ from django.shortcuts import render
 from register.models import Account
 from .forms import RegisterUser, Login
 from django.shortcuts import redirect
+from django.contrib.auth.models import User
 import requests
 import json
 
@@ -68,11 +69,14 @@ def patient(request):
                 'x-api-key': 'fd0ae52b-0866-449e-8e60-d0b12525cbbc'
             }
             response = requests.request('POST', url, headers=headers, data=payload, allow_redirects=False)
-            data = response.json()
+            d2 = response.json()
             form.save()
             acc = Account.objects.latest('id')
-            acc.acc_id = data['data'][0]['id']
+            acc.acc_id = d2['data'][0]['id']
             acc.save()
+
+            user = User.objects.create_user(username=data.get('email'), email=data.get('email'), password=data.get('password'))
+            user.save()
 
             return redirect('index')
     else:
