@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <title>Doctor Personal Page</title>
     <link href="css/bootstrap.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="css/styles.css">
+    <link rel="icon" type="image/png" href="img/favicon.png">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <style>
         /* Split the screen in half */
         .split {
@@ -19,13 +22,12 @@
         /* Control the left side */
         .left {
             left: 0;
-            background-color: #20c997;
         }
 
         /* Control the right side */
         .right {
             right: 0;
-            background-color: cornsilk;
+            background-color: #ffffff;
         }
         .form-control {
             width: 100%;
@@ -36,7 +38,7 @@
 <body>
 <div class="split left">
     <div class="centered">
-        <h2>Create Files</h2>
+        <h2>Add prescription</h2>
         <form class="form">
             <div class="row">
                 <div class="col">
@@ -74,6 +76,11 @@
                     <input type="text" class="form-control" placeholder="Description" name="description">
                 </div>
             </div>
+            <div class="row">
+                <div class="col" align="center">
+                    <button type="submit" class="btn btn-light">Submit</button>
+                </div>
+            </div>
         </form>
     </div>
 </div>
@@ -81,6 +88,7 @@
     <div class="centered">
         <h2>Edit Files</h2>
     </div>
+    <img class="doctor" src="img/doctor.PNG">
 </div>
 </body>
 </html>

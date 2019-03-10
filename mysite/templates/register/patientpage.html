@@ -5,26 +5,164 @@
     <title>Personal page</title>
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <link rel="stylesheet" type="text/css" href="css/styles.css">
+    <link rel="icon" type="image/png" href="img/favicon.png">
     <style>
         body {
             color: #ffffff;
+            background: #d10a49;
+        }
+        .split {
+            height: 100%;
+            width: 50%;
+            position: fixed;
+            z-index: 1;
+            top: 0;
+            overflow-x: hidden;
+            padding-top: 20px;
+        }
+        .centered {
+            width: 60%;
+        }
+        .row {
+            margin: 12px;
+        }
+        .patient {
+            width: 60%;
+            height: 60%;
+        }
+        .doctor {
+            width: 60%;
+            height: 60%;
+        }
+        .btn-light2 {
+            color: white;
             background: #d10a49;
         }
     </style>
 </head>
 <body>
 <div class="split left">
-    <div class="centered" onclick="location.href='patient'">
-        <h2>Patient</h2>
-        <p>Sign up</p>
+    <div class="centered">
+        <h2>Add new prescription</h2>
+        <form class="form">
+            <div class="row">
+                <div class="col">
+                    <input type="text" class="form-control" placeholder="Doctor" name="first_name">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <input type="text" class="form-control" placeholder="Medication" name="medication">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <input type="text" class="form-control" placeholder="Frequency" name="frequency">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <input type="text" class="form-control" placeholder="Dosage" name="dosage">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <input type="text" class="form-control" placeholder="Expiration Date" name="exp_date">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <input type="text" class="form-control" placeholder="Description" name="description">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col" align="center">
+                    <button type="submit" class="btn btn-light">Submit</button>
+                </div>
+            </div>
+        </form>
     </div>
+    <img class="patient" src="img/patient.PNG">
 </div>
 <div class="split right">
-    <div class="centered" onclick="location.href='doctor'">
-        <h2>Doctor</h2>
-        <p>Sign up</p>
+    <div class="centered">
+        <h2>Send request to a doctor</h2>
+        <div  class="dropdown">
+            <select id="locality-dropdown" name="locality">
+            </select>
+        </div>
+        <form class="form" style="width: 80%" style="align-content: center">
+            <div class="row">
+                <div class="col">
+                    <input type="text" class="form-control" placeholder="Doctor" name="doc">
+                </div>
+            </div>
+        </form>
+        <br>
+        <button id="sub-req" type="submit" class="btn btn-light2">Submit request</button>
     </div>
+    <img class="doctor" src="img/doctor.PNG">
 </div>
 </body>
 </html>
+<script>
+    var settings = {
+    "url": "https://api.todaqfinance.net/files",
+    "method": "POST",
+    "timeout": 0,
+    "headers": {
+    "Content-Type": "application/json",
+    "x-api-key": "fd0ae52b-0866-449e-8e60-d0b12525cbbc"
+    },
+    "data": "{\n    \"data\": {\n    \t\"type\":\"file\",\n    \t\"attributes\":{\n    \t\t\"payload\":{ \n    \t\t\t\"id\": \"1a3c1e04-ab62-4c44-b4a3-873f5d50c07d\",\n\t\t\t\t \"type\": \"loyalty-token\",\n\t\t\t\t \"member-type\": \"gold\"\n    \t\t}\n    \t},\n    \t\"relationships\":{\n    \t\t\"initial-account\":{\n    \t\t\t\"data\":{\n\t    \t\t\t\"type\":\"account\",\n    \t\t\t\t\"id\":\"86c566f6-00ea-4309-8c54-98727754bf85\"\n    \t\t\t}\n    \t\t},\n    \t\t\"file-type\": {\n    \t\t\t\"data\": {\n    \t\t\t\t\"id\": \"ddbb8d2fa80f5eeb2c9071026038557571d65db62ba1d32a974c7932dc4a5fa2\"\n    \t\t\t}\n    \t\t}\n    \t}\n    }\n}",
+    };
+
+    $.ajax(settings).done(function (response) {
+    console.log(response);
+    });
+</script>
+<script>
+    let dropdown = $('#locality-dropdown');
+
+    dropdown.empty();
+
+    dropdown.append('<option selected="true" disabled>Choose a prescription</option>');
+    dropdown.prop('selectedIndex', 0);
+
+    const url = 'https://api.myjson.com/bins/7xq2x';
+    var settings = {
+        "url": "https://api.todaqfinance.net/files/732c13b30c60a466728468e3d77f3a1c5fb75f3071d5d16b5dafb2a1e03adf75",
+        "method": "GET",
+        "timeout": 0,
+        "headers": {
+            "Content-Type": "application/json",
+            "x-api-key": "fd0ae52b-0866-449e-8e60-d0b12525cbbc"
+        },
+    };
+
+    $.ajax(settings).done(function (response) {
+        $.getJSON(response, function (data) {
+            $.each(data), function (key, entry) {
+                dropdown.append($('<option></option>').attr('value', entry.id).text(entry.name));
+            }
+        });
+    });
+    var settings2 = {
+        "url": "https://api.todaqfinance.net/transactions",
+        "method": "POST",
+        "timeout": 0,
+        "headers": {
+            "Content-Type": "application/json",
+            "x-api-key": "fd0ae52b-0866-449e-8e60-d0b12525cbbc"
+        },
+        "data": "{\n\t\"data\": {\n    \t\"relationships\":{\n    \t\t\"sender\":{\n    \t\t\t\"data\": {\n\t    \t\t\t\"type\":\"account\",\n    \t\t\t\t\"id\":\"28cd9275-fcdc-4611-9203-7c64621b9efe\"\n    \t\t\t}\n    \t\t},\n    \t\t\"recipient\":{\n    \t\t\t\"data\": {\n\t    \t\t\t\"type\":\"account\",\n    \t\t\t\t\"id\":\"0c39911e-f73a-45d7-b120-b5929a5f3385\"\n    \t\t\t}\n    \t\t},\n    \t\t\"files\":{\n    \t\t\t\"data\":[\n    \t\t\t\t{\n    \t\t\t\t\t\"type\":\"file\",\n\t\t    \t\t\t\"id\":\"7426a353a1908c70d049797ce93ee97821b94233aef9b758ef9600e9aaa520c5\"\n    \t\t\t\t}\n\t\t\t\t]\n    \t\t}\n    \t}\n    }\n}",
+    };
+    $( "#sub-req" ).click(function() {
+        $.ajax(settings2).done(function (response) {
+            console.log(response);
+        });
+    });
+
+</script>
