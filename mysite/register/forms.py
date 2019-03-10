@@ -7,7 +7,8 @@ class RegisterUser(forms.ModelForm):
 
     class Meta:
         model = Account
-        exclude = ('acc_id',)
+        exclude = ('acc_id','is_doctor')
+
 
 class Login(forms.Form):
 
