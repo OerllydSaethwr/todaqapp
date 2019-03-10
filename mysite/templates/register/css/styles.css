@@ -48,3 +48,7 @@
     bottom: 0px;
     z-index: -1;
 }
+.btn-light {
+    background: white;
+    color: #D00A49;
+}
