@@ -9,3 +9,9 @@ class RegisterUser(forms.ModelForm):
         model = Account
         exclude = ('acc_id',)
 
+class Login(forms.Form):
+
+    email = forms.CharField(max_length=200)
+    password = forms.CharField(max_length=200)
+
+

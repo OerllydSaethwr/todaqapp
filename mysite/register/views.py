@@ -1,5 +1,7 @@
 from django.shortcuts import render
-from .forms import RegisterUser
+
+from register.models import Account
+from .forms import RegisterUser, Login
 from django.shortcuts import redirect
 import requests
 import json
@@ -8,8 +10,25 @@ import json
 
 
 def index(request):
-    context = {}
-    return render(request, 'register/index.html', context)
+    if request.method == "POST":
+        form = Login(request.POST)
+        if form.is_valid():
+            data = form.cleaned_data
+            email = data.get('email')
+            password = data.get('password')
+            try:
+                acc = Account.objects.get(email=email)
+                if acc.password == password:
+                    return redirect('patient')
+                else:
+                    print("false")
+                    return redirect('index')
+            except:
+                print("Invalid email!")
+                return redirect('index')
+    else:
+        form = Login()
+    return render(request, 'register/index.html', {'form': form})
 
 
 def signup(request):
@@ -50,8 +69,10 @@ def patient(request):
             }
             response = requests.request('POST', url, headers=headers, data=payload, allow_redirects=False)
             data = response.json()
-            form.cleaned_data['acc_id'].initial = data['data'][0]['id']
             form.save()
+            acc = Account.objects.latest('id')
+            acc.acc_id = data['data'][0]['id']
+            acc.save()
 
             return redirect('index')
     else:
