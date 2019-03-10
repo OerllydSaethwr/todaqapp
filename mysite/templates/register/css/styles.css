@@ -1,0 +1,50 @@
+.Absolute-Center {
+    width: 50%;
+    height: 50%;
+    overflow: auto;
+    margin: auto;
+    position: absolute;
+    top: 0; left: 0; bottom: 0; right: 0;
+}
+.left {
+    left: 0;
+    color: white;
+    background-color: #d10a49;
+}
+
+.right {
+    right: 0;
+    color: #d10a49;
+    background-color: #ffffff;
+}
+
+.centered {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+.split {
+    height: 100%;
+    width: 50%;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    overflow-x: hidden;
+    padding-top: 20px;
+}
+.patient {
+    position: absolute;
+    height: 80%;
+    left: 0px;
+    bottom: 0px;
+    z-index: -1;
+}
+.doctor {
+    position: absolute;
+    height: 75%;
+    right: 0px;
+    bottom: 0px;
+    z-index: -1;
+}
