@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Doctor Personal Page</title>
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <style>
+        /* Split the screen in half */
+        .split {
+            height: 100%;
+            width: 50%;
+            position: fixed;
+            z-index: 1;
+            top: 0;
+            overflow-x: hidden;
+            padding-top: 20px;
+        }
+
+        /* Control the left side */
+        .left {
+            left: 0;
+            background-color: #20c997;
+        }
+
+        /* Control the right side */
+        .right {
+            right: 0;
+            background-color: cornsilk;
+        }
+        .form-control {
+            width: 100%;
+            margin: 2px;
+        }
+    </style>
+</head>
+<body>
+<div class="split left">
+    <div class="centered">
+        <h2>Create Files</h2>
+        <form class="form">
+            <div class="row">
+                <div class="col">
+                    <input type="text" class="form-control" placeholder="Patients First Name" name="first_name">
+                </div>
+                <div class="col">
+                    <input type="text" class="form-control" placeholder="Patient Last Name" name="last_name">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <input type="text" class="form-control" placeholder="Patient DOB" name="dob">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <input type="text" class="form-control" placeholder="Medication" name="medication">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <input type="text" class="form-control" placeholder="Frequency" name="frequency">
+                </div>
+                <div class="col">
+                    <input type="text" class="form-control" placeholder="Dosage" name="dosage">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <input type="text" class="form-control" placeholder="Expiration Date" name="exp_date">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <input type="text" class="form-control" placeholder="Description" name="description">
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<div class="split right">
+    <div class="centered">
+        <h2>Edit Files</h2>
+    </div>
+</div>
+</body>
+</html>
