@@ -5,8 +5,8 @@
     <title>Register new patient</title>
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
-    <link rel="stylesheet" type="text/css" href="css/styles.css">
-    <link rel="icon" type="image/png" href="img/favicon.png">
+    <link rel="stylesheet" type="text/css" href="/static/css/styles.css">
+    <link rel="icon" type="image/png" href="/static/img/favicon.png">
     <style>
         body {
             color: black;
@@ -23,10 +23,10 @@
     </style>
 </head>
 <body>
-<form class="w-50 Absolute-Center" method="post", action="" name="RegisterUser">
+<form class="w-50 Absolute-Center" method="post", action="" name="RegisterUser">{% csrf_token %}
     <div class="row">
         <div class="col" align="center">
-            <img src="img/register.PNG" height="50%" width="50%">
+            <img src="/static/img/register.PNG" height="50%" width="50%">
         </div>
     </div>
     <div class="row">
@@ -80,6 +80,6 @@
         </div>
     </div>
 </form>
-<img class="patient" src="img/patient.PNG">
+<img class="patient" src="/static/img/patient.PNG">
 </body>
 </html>

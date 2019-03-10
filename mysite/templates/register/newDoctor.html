@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <title>Doctor Personal Page</title>
-    <link href="css/bootstrap.css" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="css/styles.css">
-    <link rel="icon" type="image/png" href="img/favicon.png">
+    <link href="/static/css/bootstrap.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="/static/css/styles.css">
+    <link rel="icon" type="image/png" href="/static/img/favicon.png">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <style>
         /* Split the screen in half */
@@ -39,7 +39,7 @@
 <div class="split left">
     <div class="centered">
         <h2>Add prescription</h2>
-        <form class="form">
+        <form class="form" method="post" action="">{% csrf_token %}
             <div class="row">
                 <div class="col">
                     <input type="text" class="form-control" placeholder="Patients First Name" name="first_name">
@@ -88,7 +88,7 @@
     <div class="centered">
         <h2>Edit Files</h2>
     </div>
-    <img class="doctor" src="img/doctor.PNG">
+    <img class="doctor" src="/static/img/doctor.PNG">
 </div>
 </body>
 </html>
