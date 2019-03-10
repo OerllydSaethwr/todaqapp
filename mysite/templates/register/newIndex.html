@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,28 +10,29 @@
 
     <title>AAA</title>
 
-    <link href="css/bootstrap.css" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="css/styles.css">
-    <link rel="icon" type="image/png" href="img/favicon.png">
+    <link href="/static/css/bootstrap.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="/static/css/styles.css">
+    <link rel="icon" type="image/png" href="/static/img/favicon.png">
+
 </head>
 
 <body>
 <div class="split left">
     <div class="centered">
         <h2>Patient</h2>
-        <button class="btn btn-outline-light" onclick="location.href='newPatient.html';">REGISTER</button>
-        <button class="btn btn-outline-light" onclick="location.href='index.html';">LOGIN</button>
+        <button class="btn btn-outline-light" onclick="location.href='newPatient';">REGISTER</button>
+        <button class="btn btn-outline-light" onclick="location.href='index';">LOGIN</button>
     </div>
-    <img class="patient" src="img/patient.PNG">
+    <img class="patient" src="/static/img/patient.PNG">
 </div>
 <div class="split right">
     <div class="centered">
         <h2>Doctor</h2>
-        <button class="btn btn-outline-dark" onclick="location.href='newDoctor.html';">REGISTER</button>
-        <button class="btn btn-outline-dark" onclick="location.href='index.html';">LOGIN</button>
+        <button class="btn btn-outline-dark" onclick="location.href='newDoctor';">REGISTER</button>
+        <button class="btn btn-outline-dark" onclick="location.href='index';">LOGIN</button>
 
     </div>
-    <img class="doctor" src="img/doctor.PNG">
+    <img class="doctor" src="/static/img/doctor.PNG">
 </div>
 
 </body>

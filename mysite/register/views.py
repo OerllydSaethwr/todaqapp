@@ -10,6 +10,10 @@ import json
 # Create your views here.
 
 
+def landing(request):
+    return render(request, 'register/newIndex.html', {})
+
+
 def index(request):
     if request.method == "POST":
         form = Login(request.POST)
@@ -81,12 +85,12 @@ def patient(request):
             return redirect('index')
     else:
         form = RegisterUser()
-    return render(request, 'register/patient.html', {'form': form})
+    return render(request, 'register/newPatient.html', {'form': form})
 
 
 def doctor(request):
     context = {}
-    return render(request, 'register/doctor.html', context)
+    return render(request, 'register/newDoctor.html', context)
 
 
 def doctorpage(request):
